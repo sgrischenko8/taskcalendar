@@ -342,11 +342,23 @@ ${fe.current.stack}
 `,qP=document.querySelector("#modal-root"),y0=({task:e,submitHandler:t,onClose:n})=>{I.useEffect(()=>{function d(a){a.code==="Escape"&&n()}return document.body.style.overflowY="hidden",window.addEventListener("keydown",d),()=>{document.body.style.overflowY="auto",window.removeEventListener("keydown",d)}},[n]);const r=d=>{d.target?.className.includes("overlay")&&n()},o=["Select ...","orange","green","yellow","blue","violet"],[i,s]=I.useState(["transparent"]),[l,u]=I.useState(e?e.title:"");function c(d,a){const f=d.target,y=[...i];a===i.length-1&&(y.pop(),y.push(f.value,"transparent")),y[a]=f.value,s(y)}function m(d){d.preventDefault();const a=d.target,f=[],y={};Array.from(a).map(g=>{g?.name==="title"?y.title=g.value:g?.value&&f.push(g.value)}),y.color=f,e&&(e.color=f,e.title=y.title),t(e||y),n()}return er.createPortal(B.jsx(GP,{className:"overlay",onMouseDown:r,children:B.jsxs(QP,{children:[B.jsx("button",{type:"button",onClick:()=>n(),children:"x"}),B.jsxs("form",{onSubmit:m,id:"editForm",children:[i.map((d,a)=>B.jsxs("label",{children:["Color mark:",B.jsx("select",{name:`color${a}`,style:{background:i[a]},onChange:f=>c(f,a),value:i[a],required:i.length===1||d!=="transparent",children:o.map(f=>B.jsx("option",{value:f==="Select ..."?"":f,style:{background:f},disabled:f===i[a],children:f},f))})]},d+a)),B.jsxs("label",{children:["Title:",B.jsx("textarea",{name:"title",rows:8,value:l,onChange:d=>u(d.target.value),required:!0})]}),B.jsx("button",{type:"submit",onClick:()=>!1,children:"Ok"})]})]})}),qP)},KP=ut.form`
   margin-bottom: 20px;
   padding: 10px;
-  position: absolute;
+  position: relative;
+
+  width: 100%;
   display: flex;
+
+  @media screen and (min-width: 780px) {
+    position: absolute;
+    max-width: 33%;
+
+    & > input {
+      max-width: 100%;
+    }
+  }
 
   & > input {
     padding: 5px 10px 5px 40px;
+    width: 100%;
   }
 
   & > svg {
