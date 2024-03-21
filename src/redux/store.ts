@@ -1,14 +1,6 @@
 import { configureStore, ConfigureStoreOptions } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { holidaysApi } from './holidaysSlice';
-import {
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createStore = (
@@ -19,11 +11,7 @@ export const createStore = (
       [holidaysApi.reducerPath]: holidaysApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-      }).concat(holidaysApi.middleware),
+      getDefaultMiddleware().concat(holidaysApi.middleware),
     ...options,
   });
 
