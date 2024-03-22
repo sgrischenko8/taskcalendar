@@ -1,4 +1,4 @@
-# Hotel Booking Calendar
+# Task Calendar
 
 This repository includes code for Task Calendar app created with React. The app contains of calendar grid with the ability to create and organize tasks using drag and drop and filter for searching tasks by text. 
 
